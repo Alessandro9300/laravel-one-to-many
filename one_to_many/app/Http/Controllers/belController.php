@@ -33,4 +33,21 @@ class belController extends Controller
     $employees = Employee::all();
     return view('update', compact('task', 'employees'));
   }
+
+  public function updateStore(request $request, $id){
+
+    // dd($request);
+
+    $validation = $request -> validate([
+      'name' => 'required',
+      'description' => 'required',
+      'scadenza' => 'required',
+      'employee_id' => 'required'
+    ]);
+
+    Tasks::whereId($id) -> update($validation);
+
+    return redirect() -> route('home');
+
+  }
 }

@@ -1,17 +1,17 @@
 @extends('layout')
 
 @section('section')
-  <form class="" action="index.html" method="post">
+  <form class="" action="{{route('update_store', $task -> id)}}" method="post">
     @csrf
 	  @method('post')
-    <label> name </label>
-    <input type="text" name="{{$task -> name}}" value="{{$task -> name}}"> <br>
-    <label> description </label>
-    <input type="text" name="{{$task -> description}}" value="{{$task -> description}}"> <br>
-    <label> scadenza </label>
-    <input type="text" name="{{$task -> scadenza}}" value="{{$task -> scadenza}}"> <br>
+    <label for="name">Name</label>
+    <input type="text" name="name" value="{{$task -> name}}"> <br>
+    <label for="description"> description </label>
+    <input type="text" name="description" value="{{$task -> description}}"> <br>
+    <label for="scadenza"> scadenza </label>
+    <input type="text" name="scadenza" value="{{$task -> scadenza}}"> <br>
 
-    <select class="" name="">
+    <select class="" name="employee_id">
       @foreach ($employees as $employee)
         <option value="{{$employee -> id}}"
           @if ($employee -> id === $task -> employee -> id)
@@ -19,9 +19,10 @@
           @endif
           >
 
-        {{$employee -> firstname}} {{$employee -> lastname}}</option>
+        {{$employee -> firstname}} {{$employee -> lastname}} </option>
+
       @endforeach
-    </select>
+    </select> <br>
 
     <input type="submit" name="" value="Conferma">
   </form>
