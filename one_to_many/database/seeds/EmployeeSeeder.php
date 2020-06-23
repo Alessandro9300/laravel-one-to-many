@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Employee;
+use App\Location;
 
 class EmployeeSeeder extends Seeder
 {
@@ -13,5 +14,7 @@ class EmployeeSeeder extends Seeder
     public function run()
     {
         factory(Employee::class, 15) -> create();
-    }
+    
+
+  }
 }
